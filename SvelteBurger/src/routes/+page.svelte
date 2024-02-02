@@ -1,7 +1,5 @@
 <script>
-	import Counter from './Counter.svelte';
-	import welcome from '$lib/images/svelte-welcome.webp';
-	import welcome_fallback from '$lib/images/svelte-welcome.png';
+	import burger_king from '$lib/images/Burger_King_logo.svg.png';
 </script>
 
 <svelte:head>
@@ -11,21 +9,19 @@
 
 <section>
 	<h1>
-		<span class="welcome">
+		<span class="burger_king_logo">
 			<picture>
-				<source srcset={welcome} type="image/webp" />
-				<img src={welcome_fallback} alt="Welcome" />
+				<img src={burger_king} alt="burgerKing" />
 			</picture>
 		</span>
 
-		to your new<br />SvelteKit app
+		Bienvenu dans votre nouvelle<br />application Burger King
 	</h1>
 
 	<h2>
-		try editing <strong>src/routes/+page.svelte</strong>
+		Votre application pour commander des Burger
 	</h2>
 
-	<Counter />
 </section>
 
 <style>
@@ -41,15 +37,18 @@
 		width: 100%;
 	}
 
-	.welcome {
+	.burger_king_logo {
 		display: block;
 		position: relative;
-		width: 100%;
+		margin-left: auto;
+    	margin-right: auto;
+		margin-bottom: 2em;
+		width: 25%;
 		height: 0;
 		padding: 0 0 calc(100% * 495 / 2048) 0;
 	}
 
-	.welcome img {
+	.burger_king_logo img {
 		position: absolute;
 		width: 100%;
 		height: 100%;
