@@ -1,7 +1,11 @@
 <script>
-	import Counter from './Counter.svelte';
-	import welcome from '$lib/images/svelte-welcome.webp';
-	import welcome_fallback from '$lib/images/svelte-welcome.png';
+	import Pagination from "./Pagination.svelte";
+
+
+	export let data;
+	export let error;
+	let burgers = data.props.data;
+	let trimmedBurgers = [];
 </script>
 
 <svelte:head>
@@ -10,22 +14,25 @@
 </svelte:head>
 
 <section>
-	<h1>
-		<span class="welcome">
-			<picture>
-				<source srcset={welcome} type="image/webp" />
-				<img src={welcome_fallback} alt="Welcome" />
-			</picture>
-		</span>
-
-		to your new<br />SvelteKit app
-	</h1>
+<p></p>	
+	<h1> Burger Svelte </h1>
+		{#if error}
+        <!-- Handle the case where there is an error fetching data -->
+        <p>Error: {error}</p>
+    {:else}
+        <!-- Render data from API -->
+        <ul>
+            {#each trimmedBurgers as burger}
+                <li>{burger.name}</li>
+				<img src='https://foodish-api.com/images/burger/burger{burger.id+1}.jpg'  alt={burger.name}>
+            {/each}
+        </ul>
+    {/if}
 
 	<h2>
-		try editing <strong>src/routes/+page.svelte</strong>
+		commandez maintenant
 	</h2>
-
-	<Counter />
+	<Pagination rows={burgers} perPage={9} bind:trimmedRows={trimmedBurgers} />	
 </section>
 
 <style>
@@ -40,20 +47,11 @@
 	h1 {
 		width: 100%;
 	}
-
-	.welcome {
-		display: block;
-		position: relative;
-		width: 100%;
-		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
+	li {
+		list-style-type: none;
 	}
-
-	.welcome img {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		display: block;
+	img {
+		width: 25vw;
+		height: 25vh;
 	}
 </style>
