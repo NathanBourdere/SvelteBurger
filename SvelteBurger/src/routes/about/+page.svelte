@@ -4,23 +4,17 @@
 </svelte:head>
 
 <div class="text-column">
-	<h1>About this app</h1>
+	<h1>A propos de cette application</h1>
 
+	<h2>Les membres du groupes sont:</h2>
+	<ul>
+		<li>Nathan Bourdere</li>
+		<li>Enzo Bras</li>
+		<li>Constantin Loszach</li>
+	</ul>
+	
 	<p>
-		This is a <a href="https://kit.svelte.dev">SvelteKit</a> app. You can make your own by typing the
-		following into your command line and following the prompts:
+		Ce site a été développer avec Svelte en s'inspirant du site de <a href="https://www.burgerking.fr"> Burger King</a>.
 	</p>
 
-	<pre>npm create svelte@latest</pre>
-
-	<p>
-		The page you're looking at is purely static HTML, with no client-side interactivity needed.
-		Because of that, we don't need to load any JavaScript. Try viewing the page's source, or opening
-		the devtools network panel and reloading.
-	</p>
-
-	<p>
-		The <a href="/sverdle">Sverdle</a> page illustrates SvelteKit's data loading and form handling. Try
-		using it with JavaScript disabled!
-	</p>
 </div>

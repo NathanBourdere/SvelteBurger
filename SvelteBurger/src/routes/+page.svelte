@@ -1,7 +1,6 @@
 <script>
 	import Pagination from "./Pagination.svelte";
 
-
 	export let data;
 	export let error;
 	let burgers = data.props.data;
