@@ -1,0 +1,12 @@
+@use 'sass:math';
+@use '@material/image-list/mixins' as image-list;
+
+.my-image-list-4x5 {
+    @include image-list.standard-columns(5);
+    @include image-list.aspect(math.div(4, 5));
+    max-width: 680px;
+
+    @media (max-width: 599px) {
+        @include image-list.standard-columns(3);
+    }
+}

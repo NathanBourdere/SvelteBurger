@@ -1,57 +1,42 @@
 <script>
-	import Pagination from "./Pagination.svelte";
+    import Pagination from "./Pagination.svelte";
+    import LayoutGrid, { Cell } from '@smui/layout-grid';
+    import Burger from "./Burger.svelte";
 
+    export let data;
+    export let error;
+    
+    let burgers = [];
+    let trimmedBurgers = ["loading..."];
 
-	export let data;
-	export let error;
-	let burgers = data.props.data;
-	let trimmedBurgers = [];
+    // Check if data is not null before accessing its props
+    if (data && data.props && data.props.data) {
+        burgers = data.props.data;
+    }
 </script>
 
 <svelte:head>
-	<title>Home</title>
-	<meta name="description" content="Svelte demo app" />
+    <title>Home</title>
+    <meta name="description" content="Svelte demo app" />
 </svelte:head>
 
 <section>
-<p></p>	
-	<h1> Burger Svelte </h1>
-		{#if error}
-        <!-- Handle the case where there is an error fetching data -->
+    <p></p>    
+    <h1> Bienvenue sur Burger Svelte
+        <br>
+        <br>
+        Regardez ce que nous vous proposons
+    </h1>
+    {#if error}
         <p>Error: {error}</p>
     {:else}
-        <!-- Render data from API -->
-        <ul>
+        <LayoutGrid>
             {#each trimmedBurgers as burger}
-                <li>{burger.name}</li>
-				<img src='https://foodish-api.com/images/burger/burger{burger.id+1}.jpg'  alt={burger.name}>
+                <Cell cols="4">
+                    <Burger {burger} />
+                </Cell>
             {/each}
-        </ul>
+        </LayoutGrid>
     {/if}
-
-	<h2>
-		commandez maintenant
-	</h2>
-	<Pagination rows={burgers} perPage={9} bind:trimmedRows={trimmedBurgers} />	
+    <Pagination rows={burgers} perPage={9} bind:trimmedRows={trimmedBurgers} />    
 </section>
-
-<style>
-	section {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		flex: 0.6;
-	}
-
-	h1 {
-		width: 100%;
-	}
-	li {
-		list-style-type: none;
-	}
-	img {
-		width: 25vw;
-		height: 25vh;
-	}
-</style>

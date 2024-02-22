@@ -16,8 +16,6 @@
     $: totalRows, currentPage = 0
     $: currentPage, start, end
 
-    console.log(trimmedRows)
-
 </script>
 
     {#if totalRows && totalRows > perPage}
