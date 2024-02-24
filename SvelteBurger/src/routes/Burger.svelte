@@ -1,3 +1,4 @@
+<!-- Burger.svelte -->
 <script>
     export let burger;
 
@@ -11,17 +12,25 @@
             //throw error;
         }
     }
+
+    function handleDragStart(event) {
+        // Récupérer les données à transférer (le burger)
+        event.dataTransfer.setData('json', JSON.stringify(burger));
+
+    }
 </script>
 
-<div class="burger-card">
-    {#await loadImage(burger.id) then image}
-        <img src={image} alt={burger.name}>
-    {:catch error}
-        <p>Error loading image: {error.message}</p>
-    {/await}
-    <div class="overlay">
-        <p class="burger-name">{burger.name}</p>
-    </div>
+<div class="burger-card" draggable="true" on:dragstart={handleDragStart} role="region">
+    {#if burger}
+        {#await loadImage(burger.id) then image}
+            <img src={image} alt={burger.name}>
+        {:catch error}
+            <p>Error loading image: {error.message}</p>
+        {/await}
+        <div class="overlay">
+            <p class="burger-name">{burger.name}</p>
+        </div>
+    {/if}
 </div>
 
 <style>
