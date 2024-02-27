@@ -1,6 +1,6 @@
 # SvelteBurger
 
-## Groupe (3A2)
+## Groupe (3A2B)
 - Nathan Bourdere-Andreou
 - Enzo Bras
 - Constantin Loszach
